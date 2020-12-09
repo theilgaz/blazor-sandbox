@@ -1,0 +1,12 @@
+﻿@page "/twowaybinding"
+
+<h3>TwoWayBinding</h3>
+
+<input @bind="@name" />
+
+Welcome back @name!
+
+@code {
+
+    string name = "Takeshi Kovacs";
+}

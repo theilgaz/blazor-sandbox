@@ -1,0 +1,27 @@
+﻿@page "/basiccomponent"
+
+<h3>BasicComponent</h3>
+
+<p>Hello, @name</p>
+
+<p>2 + 2 = @(2 + 2)</p>
+
+<p>The uppercase version of @name is @name.ToUpper() </p>
+
+<p>Also we can use custom method for any function: @CustomUpper(name) </p>
+
+<p>Maybe we can call a static class function: @MyStringHelper.CustomUpper(name) </p>
+ 
+
+@code {
+
+    string name = "Abdullah";
+
+    string CustomUpper(string text) => text.ToUpper();
+
+    public static class MyStringHelper
+    {
+        public static string CustomUpper(string text) => text.ToUpper();
+    }
+
+}
