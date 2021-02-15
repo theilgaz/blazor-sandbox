@@ -1,0 +1,38 @@
+﻿@page "/champions"
+@using blazor_intro.Shared
+@inject HttpClient Http
+
+<h3>NBA Champions</h3>
+
+@if (champions == null)
+{
+    <p><em>Yükleniyor...</em></p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <td>Yıl</td>
+            <td>Takım</td>
+        </tr>
+
+        @foreach (var champ in champions)
+        {
+            <tr>
+                <td>@champ.Year</td>
+                <td>@champ.Team</td>
+            </tr>
+        }
+    </table>
+}
+
+
+@code {
+
+    private Champion[] champions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        champions = await Http.GetFromJsonAsync<Champion[]>("Champion");
+    }
+}
